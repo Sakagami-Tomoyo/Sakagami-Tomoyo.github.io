@@ -425,7 +425,7 @@ git config --global user.email &quot;你的GitHub注册邮箱&quot;
 <pre><code>ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;
 </code></pre><p>例如我输入的信息如下：<br><img src="/2020/07/13/hexo-github/8.PNG" alt="示例图片" title="示例图片"></p>
 <p>执行了生成密钥命令会提示存储路径和密码以及确认密码，可以不用管，直接按三次enter，然后就OK了，但不要关闭Git Bash。</p>
-<p>最后再将生成的SSH key添加到Github上。首先找到密钥的文件，文件的路径在生成密钥的命令行中，如下：<br><img src="/2020/07/13/hexo-github/9.PNG" alt="示例图片" title="示例图片"><br>然后打开这个路径，打开下图所指的文件（我是用VScode打开的），复制其中的内容：<br><img src="/2020/07/13/hexo-github/10.PNG" alt="示例图片" title="示例图片"><br><img src="/2020/07/13/hexo-github/11.PNG" alt="示例图片" title="示例图片"><br>然后进入你的github主页点击右上角头像，点击setting -&gt; SSH and GPG keys，或者点击<a href="https://github.com/settings/keys" target="_blank" rel="noopener">这里</a>，新建密钥SSH key。<br><img src="/hexo-github/12.PNG" alt="示例图片" title="示例图片"><br>然后在Git Bash上执行下面的代码：</p>
+<p>最后再将生成的SSH key添加到Github上。首先找到密钥的文件，文件的路径在生成密钥的命令行中，如下：<br><img src="/2020/07/13/hexo-github/9.PNG" alt="示例图片" title="示例图片"><br>然后打开这个路径，打开下图所指的文件（我是用VScode打开的），复制其中的内容：<br><img src="/2020/07/13/hexo-github/10.PNG" alt="示例图片" title="示例图片"><br><img src="/2020/07/13/hexo-github/11.PNG" alt="示例图片" title="示例图片"><br>然后进入你的github主页点击右上角头像，点击setting -&gt; SSH and GPG keys，或者点击<a href="https://github.com/settings/keys" target="_blank" rel="noopener">这里</a>，新建密钥SSH key。<br><img src="/2020/07/13/hexo-github/12.PNG" alt="示例图片" title="示例图片"><br>然后在Git Bash上执行下面的代码：</p>
 <pre><code>ssh -T git@github.com
 </code></pre><p>输入之后，会出现以下提示：</p>
 <pre><code>The authenticity of host &#39;github.com (52.74.223.119)&#39; can&#39;t be established.
@@ -496,15 +496,15 @@ deploy:
           
             <div class="post-nepre full next">
           
-            <a href="/2020/07/13/hexo/" rel="next">
+            <a href="/2020/07/09/hello-world/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://pic.netbian.com/uploads/allimg/190802/202427-1564748667d21b.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://pic.netbian.com/uploads/allimg/190802/202427-1564748667d21b.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://pic.netbian.com/uploads/allimg/200630/115211-1593489131358c.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://pic.netbian.com/uploads/allimg/200630/115211-1593489131358c.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                Win10上搭建Hexo+Github个人博客</h3>
+                Hello World</h3>
                 <hr>
               </div>
             </a>
