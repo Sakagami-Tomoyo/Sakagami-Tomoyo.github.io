@@ -1014,11 +1014,11 @@ textarea {
     color:#a5a5a5
 }
 a {
-    color:#e67474;
-    outline:0;
-    -webkit-transition:color .2s ease-out,border .2s ease-out,opacity .2s ease-out;
-    -moz-transition:color .2s ease-out,border .2s ease-out,opacity .2s ease-out;
-    transition:color .2s ease-out,border .2s ease-out,opacity .2s ease-out
+    color: #e93bba;
+    outline: 0;
+    -webkit-transition: color .2s ease-out,border .2s ease-out,opacity .2s ease-out;
+    -moz-transition: color .2s ease-out,border .2s ease-out,opacity .2s ease-out;
+    transition: color .2s ease-out,border .2s ease-out,opacity .2s ease-out
 }
 a:hover,a:focus,a:active {
     color:orange
