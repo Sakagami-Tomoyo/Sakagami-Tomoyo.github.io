@@ -58,24 +58,4 @@
     
   </entry>
   
-  <entry>
-    <title>Hello World</title>
-    <link href="/2020/07/09/hello-world/"/>
-    <id>/2020/07/09/hello-world/</id>
-    <published>2020-07-09T10:56:01.000Z</published>
-    <updated>2020-07-11T17:29:27.845Z</updated>
-    
-    <summary type="html">
-    
-      Hexo默认文章
-    
-    </summary>
-    
-      <category term="随笔" scheme="/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="Hexo" scheme="/tags/Hexo/"/>
-    
-  </entry>
-  
 </feed>
