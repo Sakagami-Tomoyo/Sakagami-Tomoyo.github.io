@@ -493,7 +493,7 @@ d3=
 </code></pre><hr>
 <p>np.linspace()函数的定义如下：</p>
 <pre><code>np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
-</code></pre><p>参数说明：<br>参数|说明<br>:–:|:–:<br>start|序列的起始值<br>stop|序列的终止值，如果endpoint为true，该值包含于数列中<br>num|要生成的等步长的样本数量，默认为50<br>endpoint|该值为 true 时，数列中包含stop值，反之不包含，默认是True。<br>retstep|如果为 True 时，生成的数组中会显示间距，反之不显示。<br>dtype|返回ndarray的数据类型，如果没有提供，则会使用输入数据的类型。</p>
+</code></pre><p>参数说明：<br>|参数|说明|<br>|:–:|:–:|<br>|start|序列的起始值|<br>|stop|序列的终止值，如果endpoint为true，该值包含于数列中|<br>|num|要生成的等步长的样本数量，默认为50|<br>|endpoint|该值为 true 时，数列中包含stop值，反之不包含，默认是True。|<br>|retstep|如果为 True 时，生成的数组中会显示间距，反之不显示。|<br>|dtype|返回ndarray的数据类型，如果没有提供，则会使用输入数据的类型。|</p>
 <p>下面是具体例子：</p>
 <pre><code>d4 = np.linspace(1,100,8)
 d5 = np.linspace(1,100,8,endpoint=False)
@@ -602,7 +602,7 @@ print(a.itemsize)
 10
 int32
 4
-</code></pre><p>其中下面列表中列举了常用的的数组的元素类型：<br>名称|描述|简写<br>:–:|:–:|:–:<br>np.bool|用一个字节存储的布尔类型（True或False）|’b’<br>np.int8|一个字节大小，-128 至 127|’i’<br>np.int16|整数，-32768 至 32767|’i2’<br>np.int32|整数，-2<sup>32</sup> 至 2<sup>32</sup> -1|’i4’<br>np.int64|整数，-2<sup>64</sup> 至 2<sup>64</sup> - 1|’i8’<br>np.uint8|无符号整数，0 至 255|’u’<br>np.uint16|无符号整数，0 至 65535|’u2’<br>np.uint32|无符号整数，0 至 2<sup>32</sup> - 1|’u4’<br>np.uint64|无符号整数，0 至 2<sup>64</sup> - 1|’u8’<br>np.float16|半精度浮点数：16位，正负号1位，指数5位，精度10位|’f2’<br>np.float32|单精度浮点数：32位，正负号1位，指数8位，精度23位|’f4’<br>np.float64|双精度浮点数：64位，正负号1位，指数11位，精度52位|’f8’<br>np.complex64|复数，分别用两个32位浮点数表示实部和虚部|’c8’<br>np.complex128|复数，分别用两个64位浮点数表示实部和虚部|’c16’<br>np.object_|python对象|’O’<br>np.string_|字符串|’S’<br>np.unicode_|unicode类型|’U’</p>
+</code></pre><p>其中下面列表中列举了常用的的数组的元素类型：<br>|名称|描述|简写|<br>|:–:|:–:|:–:|<br>|np.bool|用一个字节存储的布尔类型（True或False）|’b’|<br>|np.int8|一个字节大小，-128 至 127|’i’|<br>|np.int16|整数，-32768 至 32767|’i2’|<br>|np.int32|整数，-2<sup>32</sup> 至 2<sup>32</sup> -1|’i4’|<br>|np.int64|整数，-2<sup>64</sup> 至 2<sup>64</sup> - 1|’i8’|<br>|np.uint8|无符号整数，0 至 255|’u’|<br>|np.uint16|无符号整数，0 至 65535|’u2’|<br>|np.uint32|无符号整数，0 至 2<sup>32</sup> - 1|’u4’|<br>|np.uint64|无符号整数，0 至 2<sup>64</sup> - 1|’u8’|<br>|np.float16|半精度浮点数：16位，正负号1位，指数5位，精度10位|’f2’|<br>|np.float32|单精度浮点数：32位，正负号1位，指数8位，精度23位|’f4’|<br>|np.float64|双精度浮点数：64位，正负号1位，指数11位，精度52位|’f8’|<br>|np.complex64|复数，分别用两个32位浮点数表示实部和虚部|’c8’|<br>|np.complex128|复数，分别用两个64位浮点数表示实部和虚部|’c16’|<br>|np.object_|python对象|’O’|<br>|np.string_|字符串|’S’|<br>|np.unicode_|unicode类型|’U’|</p>
 <h1 id="二、数组的索引和切片"><a href="#二、数组的索引和切片" class="headerlink" title="二、数组的索引和切片"></a>二、数组的索引和切片</h1><h2 id="1、类似Python基础语法的索引和切片"><a href="#1、类似Python基础语法的索引和切片" class="headerlink" title="1、类似Python基础语法的索引和切片"></a>1、类似Python基础语法的索引和切片</h2><h3 id="（1）一维数组"><a href="#（1）一维数组" class="headerlink" title="（1）一维数组"></a>（1）一维数组</h3><p>一维数组的索引和切片和列表类似</p>
 <pre><code>m = np.array([1,13.375,25.75,38.125,50.5,62.875,75.25,87.625])
 print(&quot;m=\n{}\n&quot;.format(m))              
