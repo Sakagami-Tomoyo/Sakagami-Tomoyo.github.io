@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2020 | 放不下的只是青春懵懂的执念</title>
+  <title itemprop="name">Python学习笔记（一）：Numpy库 | 放不下的只是青春懵懂的执念</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -387,91 +387,302 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://numpy.org/images/logos/numpy.svg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://numpy.org/images/logos/numpy.svg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Python学习笔记（一）：Numpy库</h1>
+      <p class="entry-census">
+        <span>
+          <a href="/archives">
+            <img src="https://cdn.jsdelivr.net/gh/Sakagami-Tomoyo/CDN@1.5/image/head.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="/archives">Sakagami Tomoyo</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-7-15<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2020年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      07月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2020/07/15/numpy/">
-                          <span style="color:#0bf;">
-                          15日18:56:01</span>
-                          Python学习笔记（一）：Numpy库
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/13/hexo-github/">
-                          <span style="color:#0bf;">
-                          13日22:56:01</span>
-                          Win10上搭建Hexo+Github个人博客
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/09/hello-world/">
-                          <span style="color:#0bf;">
-                          09日18:56:01</span>
-                          Hello World
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h1><p>Numpy 是 Python 专门处理高维数组计算的包。直接pip install numpy进行安装，或者安装Anaconda，其中含有大量的机器学习和数据相关的Python模块。如果在安装或者学习过程中出现什么问题的话可以进入<a href="https://numpy.org/" target="_blank" rel="noopener">Numpy官网</a>查看相关信息。在使用Numpy库之前首先我们要引用它：</p>
+<pre><code>import numpy as np
+</code></pre><p>因为每次使用Numpy中的方法或函数都要写numpy字数有点多，所以我们可以用np作为别名。</p>
+<hr>
+<p>之所以要额外引入数组这一种数据结构在于它的计算效率非常高。下面是对数组和列表每个元素进行平方的运算速度对比：</p>
+<p>先随机生成大小为10000000的数组和列表：</p>
+<pre><code>Array = np.arange(10000000)
+List = list(range(10000000))
+</code></pre><p>然后分别对其中的每个元素进行平方处理：</p>
+<pre><code>start1 = t.perf_counter()
+Array = Array ** 2
+end1 = t.perf_counter()
+print(&quot;数组平方用时为{:4f}s&quot;.format(end1 - start1))
+
+start2 = t.perf_counter()
+for i in List:
+    i = i ** 2
+end2 = t.perf_counter()
+print(&quot;列表平方用时为{:4f}s&quot;.format(end2 - start2))
+</code></pre><p>得到结果：</p>
+<pre><code>数组平方用时为0.021923s
+列表平方用时为2.955364s
+</code></pre><p>所以我们可以看出二者的运算速度相差了上百倍，所以numpy数组显然更适合做数值运算。</p>
+<hr>
+<h1 id="1、ndarray数组对象"><a href="#1、ndarray数组对象" class="headerlink" title="1、ndarray数组对象"></a>1、ndarray数组对象</h1><h2 id="（1）数组的初步认识"><a href="#（1）数组的初步认识" class="headerlink" title="（1）数组的初步认识"></a>（1）数组的初步认识</h2><p>NumPy 最重要的一个特点是其 n 维数组对象 ndarray，它是一系列同类型数据的集合所组成数据结构，以 0 下标为开始进行集合中元素的索引。ndarray 数组中的元素用的最多是数值型元素，平时我们说的一维、二维、三维数组长下面这个样子 (对应着线、面、体)。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/e4kxNicDVcCGJASNnXiaFvvjLkIO1OkC53wJoJ4DqKU96KZN0IIwia6LhAcmGibnlcl5icwB3k1U5pblgtFvQID8yow/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="ndarray"><br>axis，中文叫<strong>轴</strong>，一个数组是多少维度就有多少根轴。 Python 计数都是从 0 开始的，如下图：<br><img src="https://mmbiz.qpic.cn/mmbiz_png/e4kxNicDVcCFbegosAZmO8TprWQchprYPquc9rttyfv40BkCqicvaBU1wtAqqGwalmsOZxW1SQoe34TpvNMfguhQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="ndarray"></p>
+<h2 id="（2）数组的创建"><a href="#（2）数组的创建" class="headerlink" title="（2）数组的创建"></a>（2）数组的创建</h2><h3 id="①由python中的列表和元组等数据类型创建"><a href="#①由python中的列表和元组等数据类型创建" class="headerlink" title="①由python中的列表和元组等数据类型创建"></a>①由python中的列表和元组等数据类型创建</h3><p>这种方法主要用到np.array()函数,参数里面是元组或者列表都可以：</p>
+<pre><code>a = np.array([[2,3,4,7,5],[4,8,5,7,2]])   
+b = np.array(((1,2,5,3,7),(3,7,2,9,5)))
+print(&quot;a=\n{}\n&quot;.format(a))
+print(&quot;b=\n{}\n&quot;.format(b))
+</code></pre><pre><code>a=
+[[2 3 4 7 5]
+ [4 8 5 7 2]]
+
+b=
+[[1 2 5 3 7]
+ [3 7 2 9 5]]
+</code></pre><p>元组或列表混着来也可以:</p>
+<pre><code>c = np.array([(1,3,7,5,2),[2,7,4,9,6]])
+print(&quot;c=\n{}\n&quot;.format(c))
+</code></pre><pre><code>c=
+[[1 3 7 5 2]
+ [2 7 4 9 6]]
+</code></pre><h3 id="②定隔定点创建"><a href="#②定隔定点创建" class="headerlink" title="②定隔定点创建"></a>②定隔定点创建</h3><p>这种创建方式一共有两种函数：</p>
+<ul>
+<li>np.arange()：固定元素大小间隔</li>
+<li>np.linspace()：固定元素个数</li>
+</ul>
+<hr>
+<p>np.arange()函数的定义如下：</p>
+<pre><code>numpy.arange(start, stop, step, dtype)
+</code></pre><p>参数说明：<br>参数|说明<br>–|:–:|<br>start|起始值，默认为0<br>stop|终止值（不能为空且不包括）<br>step|步长，默认为1<br>dtype|返回ndarray的数据类型，如果没有提供，则会使用输入数据的类型。</p>
+<p>下面是具体例子：</p>
+<pre><code>d1 = np.arange(5)
+d2 = np.arange(2,5)
+d3 = np.arange(2,8,2)
+print(&quot;d1=\n{}\n&quot;.format(d1))
+print(&quot;d2=\n{}\n&quot;.format(d2))
+print(&quot;d3=\n{}\n&quot;.format(d3))
+</code></pre><pre><code>d1=
+[0 1 2 3 4]
+
+d2=
+[2 3 4]
+
+d3=
+[2 4 6 8]
+</code></pre><hr>
+<p>np.linspace()函数的定义如下：</p>
+<pre><code>np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
+</code></pre><p>参数说明：<br>参数|说明<br>–|:–:|<br>start|序列的起始值<br>stop|序列的终止值，如果endpoint为true，该值包含于数列中<br>num|要生成的等步长的样本数量，默认为50<br>endpoint|该值为 true 时，数列中包含stop值，反之不包含，默认是True。<br>retstep|如果为 True 时，生成的数组中会显示间距，反之不显示。<br>dtype|返回ndarray的数据类型，如果没有提供，则会使用输入数据的类型。</p>
+<p>下面是具体例子：</p>
+<pre><code>d4 = np.linspace(1,100,8)
+d5 = np.linspace(1,100,8,endpoint=False)
+print(&quot;d4=\n{}\n&quot;.format(d4))
+print(&quot;d5=\n{}\n&quot;.format(d5))
+</code></pre><pre><code>d4=
+[  1.          15.14285714  29.28571429  43.42857143  57.57142857  71.71428571  85.85714286 100.        ]
+
+d5=
+[ 1.    13.375 25.75  38.125 50.5   62.875 75.25  87.625]
+</code></pre><hr>
+<h3 id="③特殊数组创建"><a href="#③特殊数组创建" class="headerlink" title="③特殊数组创建"></a>③特殊数组创建</h3><p>这种创建方式有以下这些函数：</p>
+<ul>
+<li>ones()函数生成元素全为1的多维数组，参数为元组类型</li>
+<li>zeros()函数生成元素全为0的多维数组，参数为元组类型</li>
+<li>full()函数根据第一个参数生成一个多维数组，元素全为第二个参数</li>
+<li>eye()函数生成一个n维的单位矩阵，参数为n</li>
+<li>ones_like()函数根据参数中的数组形状生成一个全为1的数组</li>
+<li>zeros_like()函数根据参数中的数组形状生成一个全为0的数组</li>
+<li>full_like()函数根据第一个参数数组的形状生成一个全为第二个参数的数组</li>
+</ul>
+<p>下面是具体例子：</p>
+<pre><code>e = np.ones((2,2,5))
+f = np.zeros((2,5))
+g = np.full((2,5),8)
+h = np.eye((3))
+i = np.ones_like(a)
+j = np.zeros_like(a)
+k = np.full_like(a,8)                      
+print(&quot;e=\n{}\n&quot;.format(e))
+print(&quot;f=\n{}\n&quot;.format(f))
+print(&quot;g=\n{}\n&quot;.format(g))         
+print(&quot;h=\n{}\n&quot;.format(h))
+print(&quot;i=\n{}\n&quot;.format(i))
+print(&quot;j=\n{}\n&quot;.format(j))                   
+print(&quot;k=\n{}\n&quot;.format(k))
+</code></pre><pre><code>e=
+[[[1. 1. 1. 1. 1.]
+  [1. 1. 1. 1. 1.]]
+
+ [[1. 1. 1. 1. 1.]
+  [1. 1. 1. 1. 1.]]]
+
+f=
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+g=
+[[8 8 8 8 8]
+ [8 8 8 8 8]]
+
+h=
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+i=
+[[1 1 1 1 1]
+ [1 1 1 1 1]]
+
+j=
+[[0 0 0 0 0]
+ [0 0 0 0 0]]
+
+k=
+[[8 8 8 8 8]
+ [8 8 8 8 8]]
+</code></pre><h2 id="（3）数组的属性"><a href="#（3）数组的属性" class="headerlink" title="（3）数组的属性"></a>（3）数组的属性</h2><table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">naim</td>
+<td style="text-align:center">表示数组的秩，即数组的维数</td>
+</tr>
+<tr>
+<td style="text-align:right">shape</td>
+<td style="text-align:center">表示数组是几行几列的</td>
+</tr>
+<tr>
+<td style="text-align:right">size</td>
+<td style="text-align:center">表示数组元素的个数</td>
+</tr>
+<tr>
+<td style="text-align:right">dtype</td>
+<td style="text-align:center">表示数组的元素类型</td>
+</tr>
+<tr>
+<td style="text-align:right">itemsize</td>
+<td style="text-align:center">数组中每个元素的大小，以字节为单位</td>
+</tr>
+</tbody>
+</table>
+<p>下面是具体的例子</p>
+<pre><code>print(a.ndim)
+print(a.shape) 
+print(a.size) 
+print(a.dtype)
+print(a.itemsize)
+</code></pre><pre><code>2
+(2, 5)
+10
+int32
+4
+</code></pre><h1 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h1>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Sakagami-Tomoyo/CDN@1.6/image/alipay.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Sakagami-Tomoyo/CDN@1.6/image/wechatpay.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/07/13/hexo-github/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://pic.netbian.com/uploads/allimg/190802/202427-1564748667d21b.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://pic.netbian.com/uploads/allimg/190802/202427-1564748667d21b.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Win10上搭建Hexo+Github个人博客</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="/archives" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Sakagami-Tomoyo/CDN@1.5/image/head.jpg" itemprop="image" alt="Sakagami Tomoyo" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="/archives" itemprop="url" rel="author">Sakagami Tomoyo</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
