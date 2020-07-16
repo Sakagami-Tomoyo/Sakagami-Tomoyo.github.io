@@ -415,7 +415,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.3k字</span>
+        <span class="post-count">3.5k字</span>
       </span>
     </span>
 
@@ -424,7 +424,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
 </div>
@@ -780,7 +780,32 @@ int32
 </tr>
 </tbody>
 </table>
-<h1 id="二、数组的索引和切片"><a href="#二、数组的索引和切片" class="headerlink" title="二、数组的索引和切片"></a>二、数组的索引和切片</h1><h2 id="1、类似Python基础语法的索引和切片"><a href="#1、类似Python基础语法的索引和切片" class="headerlink" title="1、类似Python基础语法的索引和切片"></a>1、类似Python基础语法的索引和切片</h2><h3 id="（1）一维数组"><a href="#（1）一维数组" class="headerlink" title="（1）一维数组"></a>（1）一维数组</h3><p>一维数组的索引和切片和列表类似</p>
+<h1 id="二、数组的存储与读入"><a href="#二、数组的存储与读入" class="headerlink" title="二、数组的存储与读入"></a>二、数组的存储与读入</h1><h2 id="1、CSV文件格式"><a href="#1、CSV文件格式" class="headerlink" title="1、CSV文件格式"></a>1、CSV文件格式</h2><p><strong><em>CSV文件的存储和读入只适用于一维和二维数组</em></strong></p>
+<h3 id="（1）存储"><a href="#（1）存储" class="headerlink" title="（1）存储"></a>（1）存储</h3><p>将数组储存为CSV格式的函数如下：</p>
+<pre><code>np.savetxt(frame, array, fmt=&#39;%.18e&#39;, delimiter=None)
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="（2）读入"><a href="#（2）读入" class="headerlink" title="（2）读入"></a>（2）读入</h3><h2 id="2、其他格式"><a href="#2、其他格式" class="headerlink" title="2、其他格式"></a>2、其他格式</h2><h3 id="（1）存储-1"><a href="#（1）存储-1" class="headerlink" title="（1）存储"></a>（1）存储</h3><h3 id="（2）读入-1"><a href="#（2）读入-1" class="headerlink" title="（2）读入"></a>（2）读入</h3><h2 id="3、-npy格式"><a href="#3、-npy格式" class="headerlink" title="3、.npy格式"></a>3、.npy格式</h2><h3 id="（1）存储-2"><a href="#（1）存储-2" class="headerlink" title="（1）存储"></a>（1）存储</h3><h3 id="（2）读入-2"><a href="#（2）读入-2" class="headerlink" title="（2）读入"></a>（2）读入</h3><h1 id="三、数组的索引和切片"><a href="#三、数组的索引和切片" class="headerlink" title="三、数组的索引和切片"></a>三、数组的索引和切片</h1><h2 id="1、类似Python基础语法的索引和切片"><a href="#1、类似Python基础语法的索引和切片" class="headerlink" title="1、类似Python基础语法的索引和切片"></a>1、类似Python基础语法的索引和切片</h2><h3 id="（1）一维数组"><a href="#（1）一维数组" class="headerlink" title="（1）一维数组"></a>（1）一维数组</h3><p>一维数组的索引和切片和列表类似</p>
 <pre><code>m = np.array([1,13.375,25.75,38.125,50.5,62.875,75.25,87.625])
 print(&quot;m=\n{}\n&quot;.format(m))              
 print(&quot;m数组的第3个元素是：{}\n&quot;.format(m[2]))            
@@ -821,7 +846,94 @@ p数组偶数列的所有元素是：
  [[13 15]
   [17 19]
   [21 23]]]
-</code></pre><h2 id="2、正则索引"><a href="#2、正则索引" class="headerlink" title="2、正则索引"></a>2、正则索引</h2><h2 id="3、布尔索引"><a href="#3、布尔索引" class="headerlink" title="3、布尔索引"></a>3、布尔索引</h2><h2 id="4、花式索引"><a href="#4、花式索引" class="headerlink" title="4、花式索引"></a>4、花式索引</h2><h1 id="三、数组的变形"><a href="#三、数组的变形" class="headerlink" title="三、数组的变形"></a>三、数组的变形</h1>
+</code></pre><hr>
+<p>在这里我们要注意：虽然切片可以看作是多次索引，但二者还是有区别的：</p>
+<ul>
+<li>切片得到的是原数组的一个<strong>视图</strong>，修改切片中的内容会改变原数组</li>
+<li>索引得到的是原数组的一个<strong>复制</strong>，修改索引中的内容不会改变原数组</li>
+</ul>
+<p>比如：如果是修改索引中的内容，像如果我将通过索引得到数组a的第1行第3个元素值的变量的值修改为10，但是a数组本身并不会改变：</p>
+<pre><code># a = [[2,3,4,7,5],[4,8,5,7,2]] 
+x = a[0,2]
+x = 10
+print(a)
+</code></pre><pre><code>[[2 3 4 7 5]
+ [4 8 5 7 2]]
+</code></pre><p>但是如果修改切片中的内容，像我将通过切片得到数组a的第一行第2到第4元素的变量y的第2个值变为10（也就是数组a的第1行第3个元素值），那么修改之后数组a会发生变化：</p>
+<pre><code>y = a[0,1:4]
+y[1] = 10
+print(a)
+</code></pre><pre><code>[[ 2  3 10  7  5]
+ [ 4  8  5  7  2]]
+</code></pre><hr>
+<h2 id="2、整数数组索引"><a href="#2、整数数组索引" class="headerlink" title="2、整数数组索引"></a>2、整数数组索引</h2><p>Numpy中不仅仅像Python序列中一样只能用整数来索引，还可以用整数数组来索引。</p>
+<h3 id="（1）设定行和列中不同的索引"><a href="#（1）设定行和列中不同的索引" class="headerlink" title="（1）设定行和列中不同的索引"></a>（1）设定行和列中不同的索引</h3><p>先来看个例子：</p>
+<pre><code>print(a[[0,1],[0,4]])
+</code></pre><pre><code>[2 2]
+</code></pre><p>这里得到的结果并不是数组a通过整数索引：[0,1],[0,4]对应的第1行第2和第5个元素3，5。而是数组a通过整数索引：[0,0],[1,4]对应的第1行第1个元素和第2行第5个元素2，2。</p>
+<p><strong>这里我们可以把第n个数组当作是被索引的元素的第n根轴（axis n）上对应位置的集合。</strong> 比如上面例子中的两个元素分别位于第1和第2行，所以第一个数组为[0,1]。而它们在各自行上分别是处于第1列和第5列，所以第2个数组为[0,4]。</p>
+<p>下面再举一个例子：通过整数数组索引得到 4X3 数组中的位于四个角的元素。</p>
+<pre><code>x = np.array([[0,1,2],[3,4,5],[6,7,8],[9,10,11]])  
+print (&quot;x = \n{}&quot;.format(x))
+y = x[[0,0,-1,-1],[0,-1,0,-1]]
+print(&quot;数组x的四个角的元素是：{}&quot;.format(y))
+</code></pre><pre><code>x = 
+[[ 0  1  2]
+ [ 3  4  5]
+ [ 6  7  8]
+ [ 9 10 11]]
+
+数组x的四个角的元素是：[ 0  2  9 11]
+</code></pre><h3 id="（2）按特定顺序获取特定元素"><a href="#（2）按特定顺序获取特定元素" class="headerlink" title="（2）按特定顺序获取特定元素"></a>（2）按特定顺序获取特定元素</h3><p>通过上面介绍的整数数组的索引方法我们可以按特定顺序获取特定元素：例如我想按照4，1，2的顺序获取数组第1，2，4行：</p>
+<pre><code>print(x[[3,0,1]])
+</code></pre><pre><code>[[ 9 10 11]
+ [ 0  1  2]
+ [ 3  4  5]]
+</code></pre><h3 id="（3）选取方形区域的索引（借助np-ix-函数）"><a href="#（3）选取方形区域的索引（借助np-ix-函数）" class="headerlink" title="（3）选取方形区域的索引（借助np.ix_函数）"></a>（3）选取方形区域的索引（借助np.ix_函数）</h3><p>np.ix_函数就是输入两个数组，产生笛卡尔积的映射关系。例如：</p>
+<pre><code>x=np.arange(32).reshape((8,4))
+print (&quot;x = \n{}\n&quot;.format(x))
+print (x[np.ix_([1,5,7,2],[0,3,1,2])])
+</code></pre><pre><code>x = 
+[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]
+ [12 13 14 15]
+ [16 17 18 19]
+ [20 21 22 23]
+ [24 25 26 27]
+ [28 29 30 31]]
+
+[[ 4  7  5  6]
+ [20 23 21 22]
+ [28 31 29 30]
+ [ 8 11  9 10]]
+</code></pre><p> np.ix_函数将输入的数组[1,5,7,2]和数组[0,3,1,2]产生笛卡尔积，就是得到(1,0)，(1,3)，(1,1)，(1,2)；(5,0)，(5,3)，(5,1)，(5,2)；(7,0)，(7,3)，(7,1)，(7,2)；(2,0)，(2,3)，(2,1)，(2,2)。然后将这些位置构成一个数组进行索引。</p>
+<h2 id="3、布尔索引"><a href="#3、布尔索引" class="headerlink" title="3、布尔索引"></a>3、布尔索引</h2><p>布尔索引，就是用一个由布尔类型值组成的数组来选择元素的方法。<br>看下面的例子：我要从数组x中选出大于5的元素</p>
+<pre><code># x = [[0,1,2],[3,4,5],[6,7,8],[9,10,11]]
+print (&quot;x = \n{}\n&quot;.format(x))
+y = x&gt;5
+print(y)
+</code></pre><pre><code>x = 
+[[ 0  1  2]
+ [ 3  4  5]
+ [ 6  7  8]
+ [ 9 10 11]]
+
+[[False False False]
+ [False False False]
+ [ True  True  True]
+ [ True  True  True]]
+</code></pre><p>像上面例子中所示，如果直接将选择条件打印出来得到的是一个值为 True 和 False 的布尔数组。而这个布尔数组可以作为一个索引。对应位置是 True 则输出，False 则跳过：</p>
+<pre><code>z = x[y]
+print(z)
+</code></pre><pre><code>[ 6  7  8  9 10 11]
+</code></pre><p>当然也可以直接<strong><em>print(x[x&gt;5])</em></strong>,上面的写法只是为了突出布尔数组。</p>
+<h1 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h1><ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzIzMjY0MjE1MA==&amp;mid=2247486527&amp;idx=1&amp;sn=6364869cab8d474943a211bd54a828c6&amp;chksm=e8908f36dfe706206fc51c5dd35b9bad6d34f2ce4b4fcf9c188edcb48d093bbf236578342263&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">盘一盘 Python 系列 2 - NumPy</a></li>
+<li><a href="https://www.runoob.com/numpy/numpy-tutorial.html" target="_blank" rel="noopener">NumPy 教程</a></li>
+<li><a href="https://www.icourse163.org/course/BIT-1001870002" target="_blank" rel="noopener">MOOC课程Python数据分析与展示</a></li>
+</ul>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
