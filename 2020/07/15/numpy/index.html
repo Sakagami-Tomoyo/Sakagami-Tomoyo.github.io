@@ -60,7 +60,7 @@
   <style type="text/css">
   .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
   </style>
-  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#e677c4}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#e677c4}::-webkit-scrollbar-thumb{background:#e677c4}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#e677c4}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#e677c4}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
 </head>
 </html>
@@ -598,6 +598,7 @@ d5=
 f = np.zeros((2,5))
 g = np.full((2,5),8)
 h = np.eye((3))
+# a=[[2 3 4 7 5][4 8 5 7 2]]
 i = np.ones_like(a)
 j = np.zeros_like(a)
 k = np.full_like(a,8)                      
@@ -639,7 +640,7 @@ j=
 k=
 [[8 8 8 8 8]
  [8 8 8 8 8]]
-</code></pre><h2 id="3、数组的属性"><a href="#3、数组的属性" class="headerlink" title="3、数组的属性"></a>3、数组的属性</h2><p>下标展示了数组的一些常见的属性：</p>
+</code></pre><h2 id="3、数组的属性"><a href="#3、数组的属性" class="headerlink" title="3、数组的属性"></a>3、数组的属性</h2><p>下表展示了数组的一些常见的属性：</p>
 <table>
 <thead>
 <tr>
@@ -671,7 +672,8 @@ k=
 </tbody>
 </table>
 <p>下面是具体的例子</p>
-<pre><code>print(a.ndim)
+<pre><code># a=[[2 3 4 7 5][4 8 5 7 2]]
+print(a.ndim)
 print(a.shape) 
 print(a.size) 
 print(a.dtype)
