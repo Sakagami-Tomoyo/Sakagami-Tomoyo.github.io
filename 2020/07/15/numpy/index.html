@@ -224,13 +224,6 @@
                       </li>
                     
                       <li>
-                        <a href="/categories/生活/">
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                          生活
-                        </a>
-                      </li>
-                    
-                      <li>
                         <a href="/categories/资源/">
                           <i class="fa fa-cloud-download" aria-hidden="true"></i>
                           资源
@@ -415,7 +408,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">3.5k字</span>
+        <span class="post-count">5.2k字</span>
       </span>
     </span>
 
@@ -424,7 +417,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
+        <span class="post-count">23分</span>
       </span>
     </span>
 </div>
@@ -792,20 +785,244 @@ int32
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">frame</td>
+<td style="text-align:center">存储的文件名（也可以是字符串，产生器，压缩文件）</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">array</td>
+<td style="text-align:center">存入文件的数组</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">fmt</td>
+<td style="text-align:center">数组元素写入文件的格式，例如：%d %.2f %.18e</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">delimiter</td>
+<td style="text-align:center">分割字符串，默认是任何空格，如果是CSV文件，则使用’,’它可以生成任意带有分割符的文件</td>
 </tr>
 </tbody>
 </table>
-<h3 id="（2）读入"><a href="#（2）读入" class="headerlink" title="（2）读入"></a>（2）读入</h3><h2 id="2、其他格式"><a href="#2、其他格式" class="headerlink" title="2、其他格式"></a>2、其他格式</h2><h3 id="（1）存储-1"><a href="#（1）存储-1" class="headerlink" title="（1）存储"></a>（1）存储</h3><h3 id="（2）读入-1"><a href="#（2）读入-1" class="headerlink" title="（2）读入"></a>（2）读入</h3><h2 id="3、-npy格式"><a href="#3、-npy格式" class="headerlink" title="3、.npy格式"></a>3、.npy格式</h2><h3 id="（1）存储-2"><a href="#（1）存储-2" class="headerlink" title="（1）存储"></a>（1）存储</h3><h3 id="（2）读入-2"><a href="#（2）读入-2" class="headerlink" title="（2）读入"></a>（2）读入</h3><h1 id="三、数组的索引和切片"><a href="#三、数组的索引和切片" class="headerlink" title="三、数组的索引和切片"></a>三、数组的索引和切片</h1><h2 id="1、类似Python基础语法的索引和切片"><a href="#1、类似Python基础语法的索引和切片" class="headerlink" title="1、类似Python基础语法的索引和切片"></a>1、类似Python基础语法的索引和切片</h2><h3 id="（1）一维数组"><a href="#（1）一维数组" class="headerlink" title="（1）一维数组"></a>（1）一维数组</h3><p>一维数组的索引和切片和列表类似</p>
+<p>例如：</p>
+<pre><code>a = np.arange(60).reshape(5,12)
+print(&#39;a=\n{}\n&#39;.format(a))
+np.savetxt(&#39;a.csv&#39;,a,fmt=&#39;%d&#39;,delimiter=&#39;,&#39;)
+</code></pre><pre><code>a=
+[[ 0  1  2  3  4  5  6  7  8  9 10 11]
+ [12 13 14 15 16 17 18 19 20 21 22 23]
+ [24 25 26 27 28 29 30 31 32 33 34 35]
+ [36 37 38 39 40 41 42 43 44 45 46 47]
+ [48 49 50 51 52 53 54 55 56 57 58 59]]
+</code></pre><p>下图是用Excel打开a.csv文件：<br><img src="https://cdn.jsdelivr.net/gh/Sakagami-Tomoyo/CDN@1.8/articles/numpy1/1.png" alt="图片"></p>
+<h3 id="（2）读入"><a href="#（2）读入" class="headerlink" title="（2）读入"></a>（2）读入</h3><p>将CSV格式的数组文件读入的函数如下：</p>
+<pre><code>np.loadtxt(frame, dtype=np.float, delimiter=None, skiprows=0, usecols=None, unpack=False)
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">frame</td>
+<td style="text-align:center">存储的文件名（也可以是字符串，产生器，压缩文件）</td>
+</tr>
+<tr>
+<td style="text-align:center">dtype</td>
+<td style="text-align:center">需要将文件的数据转化为特定格式，由dtype指定</td>
+</tr>
+<tr>
+<td style="text-align:center">delimiter</td>
+<td style="text-align:center">分割字符串，默认是任何空格，如果是CSV文件，则使用’,’</td>
+</tr>
+<tr>
+<td style="text-align:center">skipprows</td>
+<td style="text-align:center">读取文件时需要跳过的行数，默认为0</td>
+</tr>
+<tr>
+<td style="text-align:center">usecols</td>
+<td style="text-align:center">选取指定的列，默认为全部</td>
+</tr>
+<tr>
+<td style="text-align:center">unpack</td>
+<td style="text-align:center">如果是True，把每一列当成一个向量输出写入不同变量（默认为False）</td>
+</tr>
+</tbody>
+</table>
+<p>例如我要读取a.csv文件且不要第一行：</p>
+<pre><code>b = np.loadtxt(&#39;a.csv&#39;,dtype=np.int,delimiter=&#39;,&#39;skiprows=1)
+print(&#39;b=\n{}\n&#39;.format(b))
+</code></pre><pre><code>b=
+[[12 13 14 15 16 17 18 19 20 21 22 23]
+ [24 25 26 27 28 29 30 31 32 33 34 35]
+ [36 37 38 39 40 41 42 43 44 45 46 47]
+ [48 49 50 51 52 53 54 55 56 57 58 59]]
+</code></pre><p>结果数组b与数组a相一致。而如果我要选取两列分别赋给两个变量的话，就要通过usecols和unpack变量，下面是把文件中数组的第一列：</p>
+<pre><code>b,c = np.loadtxt(&#39;a.csv&#39;,dtype=np.int,delimiter=&#39;,&#39;,usecols=(0, 2),unpack=True)
+</code></pre><pre><code>b=
+[ 0 12 24 36 48]
+
+c=
+[ 2 14 26 38 50]
+</code></pre><h2 id="2、其他格式"><a href="#2、其他格式" class="headerlink" title="2、其他格式"></a>2、其他格式</h2><p>由于CSV文件的存储和读入只适用于一维和二维数组，所以当遇见多维数组或者不想储存为CSV格式时我们可以使用tofile()方法与fromfile()函数存储和读入数组。</p>
+<h3 id="（1）存储-1"><a href="#（1）存储-1" class="headerlink" title="（1）存储"></a>（1）存储</h3><p>数组的储存我们可以使用tofile()方法，其定义为：</p>
+<pre><code>a.tofile(frame,sep=&#39;&#39;,format=&#39;%s&#39;)
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">frame</td>
+<td style="text-align:center">存储的文件名（也可以是字符串，产生器，压缩文件）</td>
+</tr>
+<tr>
+<td style="text-align:center">sep</td>
+<td style="text-align:center">设置分隔符（默认为空串，如果为空串文件将用二进制方式储存）</td>
+</tr>
+<tr>
+<td style="text-align:center">format</td>
+<td style="text-align:center">数组元素写入文件的格式</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<pre><code>c = np.arange(100).reshape(2,5,10)
+print(&#39;c=\n{}\n&#39;.format(c))
+c.tofile(&#39;c.txt&#39;,sep=&#39;,&#39;,format=&#39;%d&#39;)
+</code></pre><pre><code>c=
+[[[ 0  1  2  3  4  5  6  7  8  9]
+  [10 11 12 13 14 15 16 17 18 19]
+  [20 21 22 23 24 25 26 27 28 29]
+  [30 31 32 33 34 35 36 37 38 39]
+  [40 41 42 43 44 45 46 47 48 49]]
+
+ [[50 51 52 53 54 55 56 57 58 59]
+  [60 61 62 63 64 65 66 67 68 69]
+  [70 71 72 73 74 75 76 77 78 79]
+  [80 81 82 83 84 85 86 87 88 89]
+  [90 91 92 93 94 95 96 97 98 99]]]
+</code></pre><p>下图是用记事本打开c.txt文件：<br><img src="https://cdn.jsdelivr.net/gh/Sakagami-Tomoyo/CDN@1.8/articles/numpy1/2.png" alt="图片"><br>从图中我们可以看出，数组通过tofile()方法储存在文件中的形式是一维数组，并不是它本来的形状。所以我们通常还需要建立一个维度信息文件用来储存维度信息方便读入。</p>
+<p>如果我们采用二进制形式存储（二进制形式可以压缩文件大小）：</p>
+<pre><code>c.tofile(&#39;c1.txt&#39;,format=&#39;%d&#39;)       #二进制形式的存储和读入
+</code></pre><p>用记事本打开c1.txt文件，文件中都是乱码：<br><img src="https://cdn.jsdelivr.net/gh/Sakagami-Tomoyo/CDN@1.8/articles/numpy1/3.png" alt="图片"></p>
+<h3 id="（2）读入-1"><a href="#（2）读入-1" class="headerlink" title="（2）读入"></a>（2）读入</h3><p>将数组文件读入可以使用fromfile()函数，它的定义为：</p>
+<pre><code>np.fromfile(frame,dtype=float,count=-1,sep=&#39;&#39;)
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">frame</td>
+<td style="text-align:center">存储的文件名（也可以是字符串，产生器，压缩文件）</td>
+</tr>
+<tr>
+<td style="text-align:center">dtype</td>
+<td style="text-align:center">文件的数据类型（默认为浮点数）</td>
+</tr>
+<tr>
+<td style="text-align:center">count</td>
+<td style="text-align:center">设置读取数据的个数（默认为-1，表示全部读入）</td>
+</tr>
+<tr>
+<td style="text-align:center">sep</td>
+<td style="text-align:center">设置分隔符（默认为空串，如果为空串文件将用二进制方式读入）</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<pre><code>d = np.fromfile(&#39;c.txt&#39;,dtype=np.int,count=-1,sep=&#39;,&#39;).reshape(2,5,10)
+print(&#39;d=\n{}\n&#39;.format(d))
+</code></pre><pre><code>d=
+[[[ 0  1  2  3  4  5  6  7  8  9]
+  [10 11 12 13 14 15 16 17 18 19]
+  [20 21 22 23 24 25 26 27 28 29]
+  [30 31 32 33 34 35 36 37 38 39]
+  [40 41 42 43 44 45 46 47 48 49]]
+
+ [[50 51 52 53 54 55 56 57 58 59]
+  [60 61 62 63 64 65 66 67 68 69]
+  [70 71 72 73 74 75 76 77 78 79]
+  [80 81 82 83 84 85 86 87 88 89]
+  [90 91 92 93 94 95 96 97 98 99]]]
+</code></pre><p>如果是读取二进制文件，如c1.txt：</p>
+<pre><code>d = np.fromfile(&#39;c1.txt&#39;,dtype=np.int).reshape(2,5,10)
+print(&#39;d=\n{}\n&#39;.format(d))
+</code></pre><pre><code>d=
+[[[ 0  1  2  3  4  5  6  7  8  9]
+  [10 11 12 13 14 15 16 17 18 19]
+  [20 21 22 23 24 25 26 27 28 29]
+  [30 31 32 33 34 35 36 37 38 39]
+  [40 41 42 43 44 45 46 47 48 49]]
+
+ [[50 51 52 53 54 55 56 57 58 59]
+  [60 61 62 63 64 65 66 67 68 69]
+  [70 71 72 73 74 75 76 77 78 79]
+  [80 81 82 83 84 85 86 87 88 89]
+  [90 91 92 93 94 95 96 97 98 99]]]
+</code></pre><p>从上面我们可以发现得到的两个d数组都与c数组一致。</p>
+<h2 id="3、-npy格式"><a href="#3、-npy格式" class="headerlink" title="3、.npy格式"></a>3、.npy格式</h2><p>Numpy本身有它自己的.npy文件格式，使用np.save()函数和np.load()函数存储和读入。</p>
+<h3 id="（1）存储-2"><a href="#（1）存储-2" class="headerlink" title="（1）存储"></a>（1）存储</h3><p>使用np.save()函数对数组进行存储，下面是其定义：<br>np.save(fname,array)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">frame</td>
+<td style="text-align:center">文件名，扩展名为.npy，压缩文件的扩展名为.npz</td>
+</tr>
+<tr>
+<td style="text-align:center">array</td>
+<td style="text-align:center">存入文件的数组</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<pre><code>np.save(&#39;c.npy&#39;,c)
+</code></pre><p>np.save()函数其实是用二进制形式存储，且把维度信息存储下来。如果用记事本打开c.npy文件，可以发现里面是乱码：<br><img src="https://cdn.jsdelivr.net/gh/Sakagami-Tomoyo/CDN@1.8/articles/numpy1/4.png" alt="图片"><br>通过与c1.txt文件对比我们可以发现二者之间的差别就是c.npy文件第一行多了维度信息。正是因为这一点所以使用np.save()函数储存多维数组时不用额外建立一个文件储存维度信息。</p>
+<h3 id="（2）读入-2"><a href="#（2）读入-2" class="headerlink" title="（2）读入"></a>（2）读入</h3><p>.npy或者.npz文件的读入使用np.load()函数，其定义如下：</p>
+<pre><code>np.load(fname)
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">frame</td>
+<td style="text-align:center">文件名，扩展名为.npy，压缩文件的扩展名为.npz</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<pre><code>d = np.load(&#39;c.npy&#39;)
+print(&#39;d=\n{}\n&#39;.format(d))
+</code></pre><pre><code>d=
+[[[ 0  1  2  3  4  5  6  7  8  9]
+  [10 11 12 13 14 15 16 17 18 19]
+  [20 21 22 23 24 25 26 27 28 29]
+  [30 31 32 33 34 35 36 37 38 39]
+  [40 41 42 43 44 45 46 47 48 49]]
+
+ [[50 51 52 53 54 55 56 57 58 59]
+  [60 61 62 63 64 65 66 67 68 69]
+  [70 71 72 73 74 75 76 77 78 79]
+  [80 81 82 83 84 85 86 87 88 89]
+  [90 91 92 93 94 95 96 97 98 99]]]
+</code></pre><h1 id="三、数组的索引和切片"><a href="#三、数组的索引和切片" class="headerlink" title="三、数组的索引和切片"></a>三、数组的索引和切片</h1><h2 id="1、类似Python基础语法的索引和切片"><a href="#1、类似Python基础语法的索引和切片" class="headerlink" title="1、类似Python基础语法的索引和切片"></a>1、类似Python基础语法的索引和切片</h2><h3 id="（1）一维数组"><a href="#（1）一维数组" class="headerlink" title="（1）一维数组"></a>（1）一维数组</h3><p>一维数组的索引和切片和列表类似</p>
 <pre><code>m = np.array([1,13.375,25.75,38.125,50.5,62.875,75.25,87.625])
 print(&quot;m=\n{}\n&quot;.format(m))              
 print(&quot;m数组的第3个元素是：{}\n&quot;.format(m[2]))            
@@ -871,7 +1088,7 @@ print(a)
 <pre><code>print(a[[0,1],[0,4]])
 </code></pre><pre><code>[2 2]
 </code></pre><p>这里得到的结果并不是数组a通过整数索引：[0,1],[0,4]对应的第1行第2和第5个元素3，5。而是数组a通过整数索引：[0,0],[1,4]对应的第1行第1个元素和第2行第5个元素2，2。</p>
-<p><strong>这里我们可以把第n个数组当作是被索引的元素的第n根轴（axis n）上对应位置的集合。</strong> 比如上面例子中的两个元素分别位于第1和第2行，所以第一个数组为[0,1]。而它们在各自行上分别是处于第1列和第5列，所以第2个数组为[0,4]。</p>
+<p><strong>这里我们可以把第n个数组当作是被索引的元素的第n根轴（axis n-1）上对应位置的集合。</strong> 比如上面例子中的两个元素分别位于第1和第2行，所以第一个数组为[0,1]。而它们在各自行上分别是处于第1列和第5列，所以第2个数组为[0,4]。</p>
 <p>下面再举一个例子：通过整数数组索引得到 4X3 数组中的位于四个角的元素。</p>
 <pre><code>x = np.array([[0,1,2],[3,4,5],[6,7,8],[9,10,11]])  
 print (&quot;x = \n{}&quot;.format(x))
@@ -1007,7 +1224,7 @@ print(z)
           </div>
         </div>
         <hr>
-        <p><i class="iconfont icon-write"></i></p>
+        <p><i class="iconfont icon-write"></i>恰逢其会，猝不及防。花开两朵，天各一方。谢谢你照亮过我曾经暗淡的星空！</p>
       </section>
     </main><!-- #main -->
   </div><!-- #primary -->
@@ -1236,13 +1453,6 @@ $(document).ready(function() {
                 <a href="/categories/技术/">
                   <i class="fa fa-code" aria-hidden="true"></i>
                   技术
-                </a>
-              </li>
-            
-              <li>
-                <a href="/categories/生活/">
-                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  生活
                 </a>
               </li>
             
