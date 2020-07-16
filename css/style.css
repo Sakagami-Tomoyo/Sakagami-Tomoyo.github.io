@@ -6197,13 +6197,13 @@ button.botui-actions-buttons-button {
     min-height:38.75px
 }
 .switch-live2d {
-    background-color:#f7bb4d;
+    background-color:#ec6dcc;
     bottom:105px;
     visibility:visible;
     min-height:51px
 }
 .save-live2d {
-    background-color:#eed099;
+    background-color:#ec6dcc;
     bottom:66px;
     visibility:visible;
     min-height:39.3px
@@ -6558,10 +6558,10 @@ progress {
     width:0
 }
 .skill-1::-webkit-progress-value {
-    background:#ff9e2c
+    background:#ec4eca
 }
 .skill-1::-moz-progress-bar {
-    background:#ff9e2c
+    background:#ec4eca
 }
 @-webkit-keyframes bar-fill {
     0% {
