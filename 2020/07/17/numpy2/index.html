@@ -434,7 +434,7 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p><a href="https://blog.csdn.net/csdnwrj/article/details/107404192" target="_blank" rel="noopener">Python学习笔记（二）：Numpy库（上）</a></p>
+          <p><a href="https://sakagami-tomoyo.github.io/2020/07/15/numpy/" target="_blank" rel="noopener">Python学习笔记（二）：Numpy库（上）</a></p>
 <h1 id="一、数组的变形"><a href="#一、数组的变形" class="headerlink" title="一、数组的变形"></a>一、数组的变形</h1><h2 id="1、修改数组的形状"><a href="#1、修改数组的形状" class="headerlink" title="1、修改数组的形状"></a>1、修改数组的形状</h2><h3 id="（1）、重塑"><a href="#（1）、重塑" class="headerlink" title="（1）、重塑"></a>（1）、重塑</h3><p>重塑顾名思义就是将重新塑造数组的形状，即改变数组的维度。<strong><em>np.reshape</em></strong>函数和<strong><em>np.resize</em></strong>两个函数都可以实现这一点。</p>
 <hr>
 <p>np.reshape在不改变数据的条件下修改形状，以下是它的定义：</p>
@@ -1319,10 +1319,8 @@ print(a + b)
 <hr>
 <p>因此，进行广播机制分两步：</p>
 <ol>
-<li>检查两个数组形状是否兼容，即从两个形状元组最后一个元素，来检查：<br>  a. 它们是否有对应维度的相等子集<br>  b. 是否有一个等于 1<ol start="2">
+<li>检查两个数组形状是否兼容，即从两个形状元组最后一个元素，来检查：<br>  a. 它们是否有对应维度的相等子集<br>  b. 是否有一个等于 1</li>
 <li>一旦它们形状兼容，确定两个数组的最终形状。</li>
-</ol>
-</li>
 </ol>
 <hr>
 <p>触发广播机制一般有两种情况：</p>
